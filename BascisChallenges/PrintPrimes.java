@@ -13,7 +13,7 @@ public class PrintPrimes{
         int x; //User inputed integer
 
         Scanner Number = new Scanner(System.in);
-        System.out.println("Please input an integer greater than one: ");
+        System.out.println("Please enter an integer greater than one: ");
 
         x = Number.nextInt();
 

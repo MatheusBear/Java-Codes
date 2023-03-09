@@ -1,18 +1,17 @@
 /**
- * Selection Sort 
+ * Bubble Sort 
  * 
- * Selection sort is a simple, yet effective, sorting algorithm that works by repeatedly finding the minimum value in a list and swapping it with the first unsorted element in the list. 
- * This process is repeated for each unsorted element until the entire list is sorted.
+ * Bubble sort is a simple sorting algorithm that repeatedly steps through the list or array to be sorted, compares adjacent elements and swaps them if they are in the wrong order. 
+ * The algorithm iterates through the array until no more swaps are needed.
  * 
- * The selection sort algorithm has a time complexity of O(n^2), where n is the number of elements. 
- * While it is not the most efficient sorting algorithm, it has the advantage of being simple to implement and requiring only a constant amount of additional memory space.
+ * Time Complexity: O(n^2)
  * 
  * In this Exemple, I will create 3 different arrays, 
  * their sizes will be: 5, 10, 15 respectively.
  * then I shall create 4 different arrays, their sizes will be:
  * 1000, 10000, 100000, 1000000,
  * These Arrays will be used to test the efficiency of the Sorting method
- * Then I will put the numbers in those arrays in order by utilizing the Selection Sort Algorithm
+ * Then I will put the numbers in those arrays in order by utilizing the Bubble Sort Algorithm
  * 
  * Results of Test:
  * Hardware:
@@ -26,10 +25,10 @@
  * Array 1.000.000 (One Million): 221093 ms (3 Minutes 41 Seconds and 93 Milliseconds)
  */
 
-package Sorting;
+package Sorting_Algorithms;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class SelectionSort {
+public class BubbleSort {
     public static void main(String[] args){
         //Creation of the arrays
         int[] Array1 = new int[5];
@@ -57,7 +56,7 @@ public class SelectionSort {
         System.out.println("The first array, before sorting: ");
         Print(Array1);
 
-        //Sorting the first array with Selection Sort
+        //Sorting the first array with Bubble Sort
         Array1 = Sort(Array1);
 
         System.out.println("The first array, after sorting with Selection Sort: ");
@@ -131,8 +130,8 @@ public class SelectionSort {
 
     /**
      * Method to generate the random numbers in the arrays
-     * @param array the empty arrays
-     * @return  Arrays with random numbers added into them
+    * @param array the empty arrays
+    * @return  Arrays with random numbers added into them
     */
     public static int[] GenArray(int[] array){
 
@@ -147,25 +146,21 @@ public class SelectionSort {
 
 
     /**
-     * Selection Sort Algorithm
-     * @param array Array with random numbers in random order
-     * @return  Sorted Array
+     * Bubble Sort Algorithm
+    * @param array Array with random numbers in random order
+    * @return  Sorted Array
     */
     public static int[] Sort(int[] array){
 
         //Will move through the array, 1-by-1
         for(int i = 0; i < array.length - 1; i++){
-            int IndexMin = i; 
-
-            for(int j = i + 1; j < array.length; j++){
-                if(array[IndexMin] > array[j]){
-                    IndexMin = j;
+            for(int j = 0; j < array.length - i - 1; j++){
+                if(array[j] > array[j + 1]){
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
                 }
             }
-
-            int temp = array[IndexMin];
-            array[IndexMin] = array[i];
-            array[i] = temp;
         }
 
         return array;
@@ -173,7 +168,7 @@ public class SelectionSort {
 
     /**
      * Method to print out the arrays
-     * @param array The array full of integers
+    * @param array The array full of integers
     */
     public static void Print(int[] array){
         for(int i = 0; i < array.length; i++){
@@ -181,3 +176,4 @@ public class SelectionSort {
         }
     }
 }
+ 

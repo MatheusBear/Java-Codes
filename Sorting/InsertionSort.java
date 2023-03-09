@@ -1,18 +1,15 @@
 /**
- * Selection Sort 
+ * Insertion Sort 
  * 
- * Selection sort is a simple, yet effective, sorting algorithm that works by repeatedly finding the minimum value in a list and swapping it with the first unsorted element in the list. 
- * This process is repeated for each unsorted element until the entire list is sorted.
- * 
- * The selection sort algorithm has a time complexity of O(n^2), where n is the number of elements. 
- * While it is not the most efficient sorting algorithm, it has the advantage of being simple to implement and requiring only a constant amount of additional memory space.
+ * Insertion sort is a simple sorting algorithm that works by iteratively building up a sorted portion of an array or list. 
+ * The algorithm works by repeatedly taking an element from the unsorted portion of the array and inserting it into the correct position in the sorted portion of the array.
  * 
  * In this Exemple, I will create 3 different arrays, 
  * their sizes will be: 5, 10, 15 respectively.
  * then I shall create 4 different arrays, their sizes will be:
  * 1000, 10000, 100000, 1000000,
  * These Arrays will be used to test the efficiency of the Sorting method
- * Then I will put the numbers in those arrays in order by utilizing the Selection Sort Algorithm
+ * Then I will put the numbers in those arrays in order by utilizing the Insertion Sort Algorithm
  * 
  * Results of Test:
  * Hardware:
@@ -29,7 +26,7 @@
 package Sorting;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class SelectionSort {
+public class InsertionSort{
     public static void main(String[] args){
         //Creation of the arrays
         int[] Array1 = new int[5];
@@ -57,7 +54,7 @@ public class SelectionSort {
         System.out.println("The first array, before sorting: ");
         Print(Array1);
 
-        //Sorting the first array with Selection Sort
+        //Sorting the first array with Insertion Sort
         Array1 = Sort(Array1);
 
         System.out.println("The first array, after sorting with Selection Sort: ");
@@ -131,8 +128,8 @@ public class SelectionSort {
 
     /**
      * Method to generate the random numbers in the arrays
-     * @param array the empty arrays
-     * @return  Arrays with random numbers added into them
+    * @param array the empty arrays
+    * @return  Arrays with random numbers added into them
     */
     public static int[] GenArray(int[] array){
 
@@ -147,25 +144,23 @@ public class SelectionSort {
 
 
     /**
-     * Selection Sort Algorithm
-     * @param array Array with random numbers in random order
-     * @return  Sorted Array
+     * Insertion Sort Algorithm
+    * @param array Array with random numbers in random order
+    * @return  Sorted Array
     */
     public static int[] Sort(int[] array){
 
-        //Will move through the array, 1-by-1
-        for(int i = 0; i < array.length - 1; i++){
-            int IndexMin = i; 
+        for(int i = 1; i < array.length; i++){
+            int key = array[i];
 
-            for(int j = i + 1; j < array.length; j++){
-                if(array[IndexMin] > array[j]){
-                    IndexMin = j;
-                }
+            int j = i - 1;
+
+            while(j >= 0 && array[j] > key){
+                array[j + 1] = array[j];
+                j -= 1;
             }
 
-            int temp = array[IndexMin];
-            array[IndexMin] = array[i];
-            array[i] = temp;
+            array[j + 1] = key;
         }
 
         return array;
@@ -173,7 +168,7 @@ public class SelectionSort {
 
     /**
      * Method to print out the arrays
-     * @param array The array full of integers
+    * @param array The array full of integers
     */
     public static void Print(int[] array){
         for(int i = 0; i < array.length; i++){
@@ -181,3 +176,4 @@ public class SelectionSort {
         }
     }
 }
+ 

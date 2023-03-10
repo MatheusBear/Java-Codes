@@ -29,3 +29,9 @@ Made by: Matheus Augusto Avelar de Souza
 * Array 10.000 (Ten Thousand): **1 ms**
 * Array 100.000 (One Houndred Thousand): **18 ms**
 * Array 1.000.000 (One Million): **144 ms**
+
+### Quicksort Sort 
+* Array 1.000 (One Thousand): **0 ms**
+* Array 10.000 (Ten Thousand): **0 ms**
+* Array 100.000 (One Houndred Thousand): **7 ms**
+* Array 1.000.000 (One Million): **84 ms**

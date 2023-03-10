@@ -1,10 +1,7 @@
 /**
- * Quick Sort 
+ * Heap Sort 
  * 
- * Quick Sort is a popular sorting algorithm that follows the divide-and-conquer approach to sorting a given list of elements.
  * 
- * The algorithm works by selecting a pivot element from the list and partitioning the other elements into two sub-lists, according to whether they are less than or greater than the pivot. 
- * The pivot element is then placed in its final position in the sorted list.
  * 
  * Time Complexity: O(n * log(n))
  * 
@@ -13,7 +10,7 @@
  * then I shall create 4 different arrays, their sizes will be:
  * 1000, 10000, 100000, 1000000,
  * These Arrays will be used to test the efficiency of the Sorting method
- * Then I will put the numbers in those arrays in order by utilizing the Quick Sort Algorithm
+ * Then I will put the numbers in those arrays in order by utilizing the Heap Sort Algorithm
  * 
  * Results of Test:
  * Hardware:
@@ -30,7 +27,7 @@
 package Sorting_Algorithms;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class QuickSort {
+public class HeapSort {
     public static void main(String[] args){
         //Creation of the arrays
         int[] Array1 = new int[5];
@@ -53,15 +50,15 @@ public class QuickSort {
         EfecientArray1mil = GenArray(EfecientArray1mil);
 
 
-        System.out.println("Exemple of Quick Sort: ");
+        System.out.println("Exemple of Heap Sort: ");
 
         System.out.println("The first array, before sorting: ");
         Print(Array1);
 
-        //Sorting the first array with Quick Sort
+        //Sorting the first array with Heap Sort
         Sort(Array1);
 
-        System.out.println("The first array, after sorting with Quick Sort: ");
+        System.out.println("The first array, after sorting with Heap Sort: ");
         Print(Array1);
 
         System.out.println("*************************************************************************************");
@@ -70,7 +67,7 @@ public class QuickSort {
 
         Sort(Array2);
 
-        System.out.println("The second array, after sorting with Quick Sort: ");
+        System.out.println("The second array, after sorting with Heap Sort: ");
         Print(Array2);
         
         System.out.println("*************************************************************************************");
@@ -79,12 +76,12 @@ public class QuickSort {
 
         Sort(Array3);
 
-        System.out.println("The third array, after sorting with Quick Sort: ");
+        System.out.println("The third array, after sorting with Heap Sort: ");
         Print(Array3);
 
         System.out.println("*************************************************************************************");
 
-        System.out.println("Now we will test the efficiency of Quick Sort with bigger arrays: ");
+        System.out.println("Now we will test the efficiency of Heap Sort with bigger arrays: ");
         System.out.println("This may take a while... ");
 
         System.out.println();
@@ -132,8 +129,8 @@ public class QuickSort {
 
     /**
      * Method to generate the random numbers in the arrays
-    * @param array the empty arrays
-    * @return  Arrays with random numbers added into them
+     * @param array the empty arrays
+     * @return  Arrays with random numbers added into them
     */
     public static int[] GenArray(int[] array){
 
@@ -147,70 +144,51 @@ public class QuickSort {
     }
 
     /**
-     * Method that will get the left and right point of the array
-    * @param array Unsorted Array
+     * Heapsort Function
+     * @param array Unsorted Array
     */
     public static void Sort(int[] array){
-        int left = 0;
-        int right = array.length - 1;
 
-        Sort(array, left, right);
-    }
+        //Build Heap
+        for(int i = (array.length / 2) - 1; i >= 0; i--){
+            heapify(array, array.length, i);
+        }
 
-    /**
-     * Quicksort Function
-     * @param array Unsorted Array
-     * @param low Starting index
-     * @param high Ending index
-     */
-    public static void Sort(int[] array, int low, int high){
-        if(low < high){
-            // PI = Partition Index
-            int PI = partition(array, low, high);
+        //Extract, 1-by-1, the element from the heap
+        for(int i = array.length - 1; i > 0; i--){
+            int temp = array[0];
+            array[0] = array[i];
+            array[i] = temp;
 
-            Sort(array, low, PI - 1);
-            Sort(array, PI + 1, high);
+            heapify(array, i, 0);
         }
     }
 
-    /**
-     * Partition function
-     * @param array
-     * @param low Starting index
-     * @param high Ending index
-     * @return Pivot in the correct index
-     */
-    public static int partition(int[] array, int low, int high){
-        int pivot = array[high];
+    public static void heapify(int[] array, int size, int i){
+        int largest = i;
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
 
-        int index = (low - 1);
-
-        for(int i = low; i <= high - 1; i++){
-            if(array[i] < pivot){
-                index++;
-                Swap(array, index, i);
-            }
+        if(left < size && array[left] > array[largest]){
+            largest = left;
         }
 
-        Swap(array, index + 1, high);
-        return (index + 1);
-    }
+        if(right < size && array[right] > array[largest]){
+            largest = right;
+        }
 
-    /**
-     * Swaps to elements in the array
-     * @param array Array with elements
-     * @param i Index of the first array
-     * @param j Index of the second array
-     */
-    public static void Swap(int[] array, int i, int j){
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
+        if(largest != i){
+            int temp = array[i];
+            array[i] = array[largest];
+            array[largest] = temp;
+
+            heapify(array, size, largest);
+        }
     }
 
     /**
      * Method to print out the arrays
-    * @param array The array full of integers
+     * @param array The array full of integers
     */
     public static void Print(int[] array){
         for(int i = 0; i < array.length; i++){

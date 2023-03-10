@@ -19,10 +19,10 @@
  * RAM: 16 GB, 2944 MHz
  * 
  * Time(Milliseconds):
- * Array 1.000 (One Thousand): 1 ms
- * Array 10.000 (Ten Thousand): 24 ms
- * Array 100.000 (One Houndred Thousand): 2240 ms
- * Array 1.000.000 (One Million): 221093 ms (3 Minutes 41 Seconds and 93 Milliseconds)
+ * Array 1.000 (One Thousand): 3 ms
+ * Array 10.000 (Ten Thousand): 102 ms
+ * Array 100.000 (One Houndred Thousand): 11586 ms
+ * Array 1.000.000 (One Million): Undefined; Time > 30 Minutes 
  */
 
 package Sorting_Algorithms;
@@ -51,7 +51,7 @@ public class BubbleSort {
         EfecientArray1mil = GenArray(EfecientArray1mil);
 
 
-        System.out.println("Exemple of Selection Sort: ");
+        System.out.println("Exemple of Bubble Sort: ");
 
         System.out.println("The first array, before sorting: ");
         Print(Array1);
@@ -59,7 +59,7 @@ public class BubbleSort {
         //Sorting the first array with Bubble Sort
         Array1 = Sort(Array1);
 
-        System.out.println("The first array, after sorting with Selection Sort: ");
+        System.out.println("The first array, after sorting with Bubble Sort: ");
         Print(Array1);
 
         System.out.println("*************************************************************************************");
@@ -68,7 +68,7 @@ public class BubbleSort {
 
         Array2 = Sort(Array2);
 
-        System.out.println("The second array, after sorting with Selection Sort: ");
+        System.out.println("The second array, after sorting with Bubble Sort: ");
         Print(Array2);
         
         System.out.println("*************************************************************************************");
@@ -77,12 +77,12 @@ public class BubbleSort {
 
         Array3 = Sort(Array3);
 
-        System.out.println("The third array, after sorting with Selection Sort: ");
+        System.out.println("The third array, after sorting with Bubble Sort: ");
         Print(Array3);
 
         System.out.println("*************************************************************************************");
 
-        System.out.println("Now we will test the efficiency of Selection Sort with bigger arrays: ");
+        System.out.println("Now we will test the efficiency of Bubble Sort with bigger arrays: ");
         System.out.println("This may take a while... ");
 
         System.out.println();

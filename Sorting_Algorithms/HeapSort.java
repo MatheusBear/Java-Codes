@@ -1,7 +1,13 @@
 /**
  * Heap Sort 
  * 
+ * Heap Sort is a popular sorting algorithm that is based on the Binary Heap data structure. 
+ * The algorithm works by first building a max heap of the elements in the input array. 
+ * A max heap is a binary tree where the value of each parent node is greater than or equal to the value of its children nodes.
  * 
+ * Once the max heap is constructed, the root element, which contains the maximum value in the array, is swapped with the last element in the array. 
+ * The last element is then removed from the array and the heap is reconstructed, ignoring the last element. 
+ * This process is repeated until all elements are sorted in ascending order.
  * 
  * Time Complexity: O(n * log(n))
  * 
@@ -164,19 +170,29 @@ public class HeapSort {
         }
     }
 
+    /**
+     * Heapify Function
+     * @param array Integer array
+     * @param size Size of the array
+     * @param i Parent node of a subtree
+     */
     public static void heapify(int[] array, int size, int i){
+        //Largest as root
         int largest = i;
         int left = 2 * i + 1;
         int right = 2 * i + 2;
 
+        //if left child is larger than root
         if(left < size && array[left] > array[largest]){
             largest = left;
         }
 
+        //if right child is larger than root
         if(right < size && array[right] > array[largest]){
             largest = right;
         }
 
+        //if largest is not root
         if(largest != i){
             int temp = array[i];
             array[i] = array[largest];

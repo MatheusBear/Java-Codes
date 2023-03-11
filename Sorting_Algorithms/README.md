@@ -41,3 +41,10 @@ Made by: Matheus Augusto Avelar de Souza
 * Array 10.000 (Ten Thousand): **2 ms**
 * Array 100.000 (One Houndred Thousand): **11 ms**
 * Array 1.000.000 (One Million): **134 ms**
+
+### Shellsort 
+* Array 1.000 (One Thousand): **0 ms**
+* Array 10.000 (Ten Thousand): **2 ms**
+* Array 100.000 (One Houndred Thousand): **11 ms**
+* Array 1.000.000 (One Million): **159 ms**
+
